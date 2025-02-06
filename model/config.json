@@ -1,0 +1,69 @@
+{
+  "architectures": ["PrithviGeoSpatialMAE"],
+  "num_classes": 0,
+  "pretrained_cfg": {
+    "task_args": {
+      "task": "SemanticSegmentationTask",
+      "model_factory": "EncoderDecoderFactory",
+      "loss": "ce",
+      "ignore_index": -1,
+      "lr": 0.001,
+      "freeze_backbone": false,
+      "freeze_decoder": false,
+      "plot_on_val": 10,
+      "optimizer": "AdamW",
+      "scheduler": "CosineAnnealingLR"
+    },
+    "model_args": {
+      "backbone_pretrained": false,
+      "backbone": "prithvi_eo_v2_300_tl",
+      "decoder": "UperNetDecoder",
+      "decoder_channels": 256,
+      "decoder_scale_modules": true,
+      "num_classes": 2,
+      "rescale": true,
+      "backbone_bands": [
+        "BLUE",
+        "GREEN",
+        "RED",
+        "NIR_NARROW",
+        "SWIR_1",
+        "SWIR_2"
+      ],
+      "head_dropout": 0.1,
+      "necks": [
+        {
+          "name": "SelectIndices",
+          "indices": [
+            5,
+            11,
+            17,
+            23
+          ]
+        },
+        {
+          "name": "ReshapeTokensToImage"
+        }
+      ]
+    },
+    "optimizer_params" : {
+      "lr": 5.0e-05,
+      "betas": [0.9, 0.999],
+      "eps": [1.0e-08],
+      "weight_decay": 0.05,
+      "amsgrad": false,
+      "maximize": false,
+      "capturable": false,
+      "differentiable": false
+    },
+    "scheduler_params" : {
+        "T_max": 50,
+        "eta_min": 0,
+        "last_epoch": -1,
+        "verbose": "deprecated"
+    }
+  },
+
+
+  "torch_dtype": "float32"
+}
