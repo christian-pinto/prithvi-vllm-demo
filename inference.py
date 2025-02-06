@@ -224,11 +224,11 @@ def run_model(input_data, temporal_coords, location_coords, model, datamodule, i
         device = torch.device('cpu')
 
     if temporal_coords:
-        temporal_coords = torch.Tensor(temporal_coords, device=device).unsqueeze(0)
+        temporal_coords = torch.tensor(temporal_coords, device=device).unsqueeze(0)
     else:
         temporal_coords = None
     if location_coords:
-        location_coords = torch.Tensor(location_coords[0], device=device).unsqueeze(0)
+        location_coords = torch.tensor(location_coords[0], device=device).unsqueeze(0)
     else:
         location_coords = None
 
