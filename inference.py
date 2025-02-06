@@ -358,20 +358,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data_file",
         type=str,
-        default="/workspace/scripts/demo_flooding/examples/India_900498_S2Hand.tif",
+        default="/workspace/scripts/examples/India_900498_S2Hand.tif",
         help="Path to the file.",
     )
     parser.add_argument(
         "--config",
         "-c",
         type=str,
-        default="/workspace/scripts/demo_flooding/model/config.yaml",
+        default="/workspace/scripts/model/config.yaml",
         help="Path to yaml file containing model parameters.",
     )
     parser.add_argument(
         "--checkpoint",
         type=str,
-        default="/workspace/scripts/demo_flooding/model/Prithvi-EO-V2-300M-TL-Sen1Floods11.pt",
+        default="/workspace/scripts/model/Prithvi-EO-V2-300M-TL-Sen1Floods11.pt",
         help="Path to a checkpoint file to load from.",
     )
     parser.add_argument(
